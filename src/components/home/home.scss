@@ -1,0 +1,106 @@
+
+.home {
+  height: 100vh;
+  background: url(../../assets/img/bg/wall1.png) center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  // background: rgb(20,19,50);
+  // background: linear-gradient(333deg, rgba(20,19,50,1) 11%, rgba(99,89,233,1) 100%);
+  h1 {
+    padding: 125px 30px;
+  }
+  &__wrapper {
+    position: relative;
+    height: 80%;
+    width: 68%;
+    display: flex;
+
+    // background: rgb(20,19,50);
+    background: linear-gradient(333deg, rgba(20,19,50,1) 11%, rgba(99,89,233,1) 100%);
+    border-radius: 25px;
+  }
+  &__right {
+    padding-top: 70px;
+    padding-left: 250px;
+    height: 100%;
+    width: 68%;
+    position: absolute;
+    right: 0;
+    transform: translateX(40px);
+    
+    background-color:rgba(21,21,21,0.4);
+    border-radius: 25px;
+    &_divider {
+      display: block;
+      width: 120px;
+      height: 3px;
+      background-color: #fff;
+      margin-bottom: 30px;
+    }
+    &_wrapper {
+      z-index: 3;
+      // height: 500px;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      // background-color: #212124;
+      // border-radius: 25px;
+      h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      form {
+        input {
+          height: 40px;
+          margin-bottom: 30px;
+          background-color:rgba(21,21,21,0);
+          border: none;
+          border-bottom: 3px solid #fff;
+          color: #fff;
+        }
+        input:focus {
+          outline: none;
+        }
+        input::placeholder {
+          color: #fff;
+        }
+        button {
+          margin-top: 10px;
+          height: 40px;
+          
+        }
+      }
+    }
+  }
+  
+  &__left {
+    height: 100%;
+    width: 35%;
+  }
+  &__icon {
+    height: 610px;
+    position: absolute;
+    z-index: 2;
+    top: 22%;
+    left: -3%;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    &-fire {
+      margin-right: 10px;
+    }
+    &-logo {
+      display: block;
+      margin-top: 12px;
+      font-size: 30px;
+      font-weight: 700;
+    }
+  }
+  
+}

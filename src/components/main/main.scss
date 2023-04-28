@@ -1,0 +1,11 @@
+
+
+.main {
+  display: block;
+  height: 100vh;
+  background: url(../../assets/img/bg/wall1.png) center center / cover no-repeat;
+  &__div {
+    height: 50%;
+    background-color: white;
+  }
+}
