@@ -7,8 +7,12 @@ import {
   getFirestore,
   doc,
   getDoc,
-  setDoc
+  setDoc,
+  updateDoc,
+  collection, 
+  getDocs
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,12 +28,84 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-console.log(app);
+// console.log(app);
 
 export const auth = getAuth(app);
 
+export const db = getFirestore(app);
 
-export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation ) => {
+  if (!userAuth) return;
+  const userDocRef = doc(db, 'users', userAuth.uid);
+  const userSnapshot = await getDoc(userDocRef);
+
+  if(!userSnapshot.exists()) {
+    const { displayName, email} = userAuth;
+    const createdAt = new Date();
+    const balance = "1000000000";
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+        balance,
+        ...additionalInformation,
+      });
+    } catch (error) {
+      console.log('error creating the user ', error.message );
+    }
+  }
+  // console.log(userDocRef);
+  console.log(userSnapshot);
+  return userDocRef;
+};
+
+
+export const getDb = async (uid) => {
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    // const displayName = docSnap.data().displayName;
+    // return displayName
+    const response = docSnap.data();
+    return response;
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
+}
+
+export const updateDb = async (uid, update) => {
+  const docRef = doc(db, "users", uid);
+  
+  await updateDoc(docRef, update);
+
+}
+
+
+export const getAllUsers = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  const users = [];
+
+  querySnapshot.forEach((doc) => {
+    // console.log(doc.data());
+    const user = doc.data();
+    users.push(user);
+    
+  });
+  return users;
+}
+
+
+
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+
+  return await createUserWithEmailAndPassword(auth, email, password);
+}
 
 
 

@@ -6,7 +6,7 @@
 
 import SignIn from "../sign-in/sign-in";
 import SignUp from "../sign-up/sign-up";
-// import SignOut from "../sign-out/sign-out";
+import SignOut from "../sign-out/sign-out";
 import icons from "../../assets/img/icons/icons.png";
 import fire from "../../assets/img/icons/purple-fire.png";
 

@@ -60,7 +60,7 @@ const SignIn = () => {
   return (
     <div className="sign-in">
       
-      {user ? <h2>You are signed In, <Link className="sign-in__link" to="/main">Come in</Link> </h2> : <h2>Please sign in.</h2>}
+      {user ? <h2>You are signed In, <Link className="sign-in__link" to="/main">Come in</Link> </h2> : <h2>Please sign in</h2>}
       
       
       {/* <h2>Sign In</h2> */}
