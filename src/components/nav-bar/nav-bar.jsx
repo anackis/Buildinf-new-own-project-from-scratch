@@ -26,7 +26,7 @@ const NavBar = () => {
         </div>
         <div className="navbar__item">
           <img src={analitics} alt="navbar icon" />
-          <span>Analytics</span>
+          <span>Analytics </span>
         </div>
         <div className="navbar__item">
           <img src={wallet} alt="navbar icon" />

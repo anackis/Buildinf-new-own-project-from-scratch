@@ -1,6 +1,6 @@
 
 
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 // // import { Link } from "react-router-dom";
 // import { auth } from "../../utils/firebase/firebase";
 
@@ -32,6 +32,8 @@ const Home = () => {
   //   return unsubscribe;
   // }, []);
 
+  
+
   return (
     <section className="home" >
       
@@ -56,7 +58,7 @@ const Home = () => {
             
             <SignIn/>
             <SignUp/>
-            {/* <SignOut/> */}
+            <SignOut/>
           </div>
         </div>
       </div>

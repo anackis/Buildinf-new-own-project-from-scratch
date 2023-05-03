@@ -1,5 +1,6 @@
 
-// Import the functions you need from the SDKs you need
+
+
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
@@ -35,6 +36,8 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 
+
+
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid);
@@ -43,7 +46,12 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if(!userSnapshot.exists()) {
     const { displayName, email} = userAuth;
     const createdAt = new Date();
+    
     const balance = "1000000000";
+
+    
+
+    
 
     try {
       await setDoc(userDocRef, {

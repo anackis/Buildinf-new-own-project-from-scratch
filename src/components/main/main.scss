@@ -16,4 +16,43 @@
     background: linear-gradient(333deg, rgba(20,19,50,0.6) 11%, rgba(99,89,233,0.9) 100%);
     border-radius: 25px;
   }
+  &__card {
+  
+    padding: 20px;
+    width: 668px;
+    height: 382px; 
+    background: #1D1D41;
+    color: #fff;
+    border-radius: 20px;
+  }
+  &__content {
+    padding: 20px 20px;
+  }
+  &__drag {
+    height: 230px;
+    width: 400px;
+    position: relative;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    z-index: 2;
+    
+    img {
+      pointer-events: none;
+      height: 226px;
+    }
+  }
+  &__card-rotate {
+    // transition: transform 2s;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    user-select: none;
+    cursor: grab;
+  }
+  &__card-rotate-button {
+    height: 20px;
+    width: 100px;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../../utils/firebase/firebase";
 import { createUserDocumentFromAuth, createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
@@ -24,7 +24,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const { user } = await createAuthUserWithEmailAndPassword( email, password);
-      await createUserDocumentFromAuth(user, { displayName });
+      await createUserDocumentFromAuth(user, { displayName, cardNumber });
       resetFormFields();
       console.log("User created successfully!");
     } catch (error) {
@@ -39,6 +39,22 @@ const SignUp = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+
+  
+  const [cardNumber, setCardNumber] = useState(null);
+
+  const generateCardNumber = () => {
+    const min = 10 ** 15;
+    const max = (10 ** 16) - 1;
+    const cardNumber = Math.floor(Math.random() * (max - min + 1) + min);
+    setCardNumber(cardNumber);
+  };
+
+  useEffect(() => {
+    generateCardNumber();
+  }, [])
+
+  console.log(cardNumber);
 
   return (
     <div className="sign-up">
