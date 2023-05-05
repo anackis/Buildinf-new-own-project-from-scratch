@@ -54,7 +54,7 @@ const SignUp = () => {
     generateCardNumber();
   }, [])
 
-  console.log(cardNumber);
+  // console.log(cardNumber);
 
   return (
     <div className="sign-up">

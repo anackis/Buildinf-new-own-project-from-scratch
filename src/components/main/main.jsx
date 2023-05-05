@@ -9,6 +9,7 @@ import NavBar from "../nav-bar/nav-bar";
 
 import cardFront from "../../assets/img/card/card1.svg";
 import cardBack from "../../assets/img/card/card2.svg";
+import spinCard from "../../assets/img/card/spinCard.png";
 
 
 
@@ -20,15 +21,19 @@ const Main = () => {
   const [userUid, setUserUid] = useState("");
   const [amount, setAmount] = useState('');
   const [userBalance, setUserBalance] = useState(0);
-  const [allUsersInfo, setAllUsersInfo] = useState();
+  const [allUsersInfo, setAllUsersInfo] = useState(); 
+  const [createdAt, setCreatedAt] = useState();
+  const [imgURL, setImgURL] = useState('');
 
 
+    
+    
 
   // Check if user is login or not 
   useEffect(() => {
     const sucscribeCheck = auth.onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
+        // console.log(user);
         // console.log("// User is signed in");
         getAllUsers().then((response) => setAllUsersInfo(response))
         setUserUid(user.uid)
@@ -44,6 +49,18 @@ const Main = () => {
 
     return sucscribeCheck;
   }, [userBalance]);
+
+
+
+  useEffect(() => {
+    if (userDataDB.createdAt) {
+      formatTimestamp(userDataDB.createdAt);
+      
+    } 
+  }, [userDataDB.createdAt])
+
+  
+
 
 
   const handleAmountChange = (e) => {
@@ -76,7 +93,7 @@ const Main = () => {
   const handleDrag = (e) => {
     if (!isDragging) return;
     const changeInX = e.clientX - dragStartX.current;
-    const newDegree = degree + (changeInX / 2); // Increased sensitivity by removing division
+    const newDegree = degree + (changeInX / 2); 
     setDegree(newDegree);
     dragStartX.current = e.clientX;
   };
@@ -110,12 +127,46 @@ const Main = () => {
     const startDegree = degree;
     let targetDegree = "";
     if ((degree > 90 && degree < 270) || (degree < -90 && degree > -270) ? targetDegree = degree + 180 : targetDegree = degree - 180);
-    // const targetDegree = degree + 180;
-    const duration = 500; // Duration in milliseconds
+    const duration = 500; 
     smoothRotate(startDegree, targetDegree, duration);
   };
 
-  // console.log(degree);
+  
+
+  
+
+  function formatTimestamp({ seconds, nanoseconds }) {
+    // Combine seconds and nanoseconds into a single value in milliseconds
+    const totalMilliseconds = (seconds * 1000) + (nanoseconds / 1000000);
+  
+    // Convert the combined value into a Date object
+    const date = new Date(totalMilliseconds);
+  
+    // Format the date as desired
+    const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+  
+    setCreatedAt(formattedDate);
+  }
+
+
+
+  const handleImgUploadChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImgURL(e.target.result);
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  const uploadImg = async  () => {
+    updateDb(userUid, { userImg: imgURL });
+  };
+
+ console.log(allUsersInfo)
 
   return (
     <section className="main">
@@ -126,12 +177,29 @@ const Main = () => {
 
         <div className="main__content">
 
-          <div className="main__card">
+          <div className="main__user-block">
             {userDataDB.displayName ? <h2>Welcome, {userDataDB.displayName}!</h2> : null}
             {userDataDB.balance ? <h2>Your balance: {userDataDB.balance}$</h2> : null}
+            <span>Your card number: </span>{userDataDB.cardNumber}
+            <br />
+            <span>You created account: </span>{createdAt}
+            <img style={{height: "100px"}} src={userDataDB.userImg} alt="userImg" />
+            <div>
+              <input type="file" onChange={handleImgUploadChange} accept="image/*" />
+              <button onClick={uploadImg}>Upload Image</button>
+
+             
+            </div>
+            
+          </div>
+
+
+          <div className="main__card">
+            
+            {userDataDB.balance ? <h2>Your balance: {userDataDB.balance}$</h2> : null}
             {userDataDB.cardNumber}
-            <div className="main__card-creditcard">
-              <div className="main__drag"
+            <div className="main__card__creditcard">
+              <div className="main__card__drag"
                   onMouseDown={handleDragStart}
                   onMouseMove={handleDrag}
                   onMouseUp={handleDragEnd}
@@ -155,7 +223,9 @@ const Main = () => {
                 </div>
                 
               </div>
-              <button onClick={handleButtonClick} className="main__card-rotate-button">Rotate</button>
+              <button onClick={handleButtonClick} className="main__card-rotate-button">
+                <img src={spinCard} alt="card-spin" />
+              </button>
             </div>
           </div>
           
@@ -169,14 +239,20 @@ const Main = () => {
               onChange={handleAmountChange}
               placeholder="Enter amount to add"
             />
-            <button onClick={addAmountToBalance}>Add Amount</button>
+            <button onClick={addAmountToBalance}>Add to balance</button>
 
             <div>
               <h1>All Users</h1>
               {allUsersInfo ? allUsersInfo.map((user, index) => (
+               
                 <div key={index}>
-                  {user.balance}
                   {user.displayName}
+                  <br />
+                  {user.balance}
+                  <br />
+                  <img style={{height: "100px"}} src={user.userImg} alt="userImg" />
+                  
+                  
                   
                 </div>
               )) : null}

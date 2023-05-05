@@ -13,9 +13,8 @@ import {
   collection, 
   getDocs
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
+import userImgIcon from "../../assets/img/icons/user.png";
 
 
 const firebaseConfig = {
@@ -29,10 +28,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-// console.log(app);
-
 export const auth = getAuth(app);
-
 export const db = getFirestore(app);
 
 
@@ -46,12 +42,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if(!userSnapshot.exists()) {
     const { displayName, email} = userAuth;
     const createdAt = new Date();
-    
     const balance = "1000000000";
-
-    
-
-    
+    const userImg = userImgIcon;
 
     try {
       await setDoc(userDocRef, {
@@ -59,6 +51,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
         email,
         createdAt,
         balance,
+        userImg,
         ...additionalInformation,
       });
     } catch (error) {
@@ -86,11 +79,11 @@ export const getDb = async (uid) => {
   }
 }
 
+
 export const updateDb = async (uid, update) => {
   const docRef = doc(db, "users", uid);
   
   await updateDoc(docRef, update);
-
 }
 
 
