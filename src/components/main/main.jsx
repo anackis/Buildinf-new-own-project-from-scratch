@@ -198,21 +198,57 @@ const Main = () => {
     outcome: 'red',
   };
 
-  // console.log(userDataDB.balance_history);
+  
+
+  const [totalTransactions, setTotalTransactions] = useState({totalIncome: "", totalOutcome: ""});
+
+  function calculateTotals(transactions) {
+    const totals = transactions.reduce(
+      (acc, transaction) => {
+        if (transaction.type === "income") {
+          acc.income += transaction.value;
+        } else if (transaction.type === "outcome") {
+          acc.outcome += transaction.value;
+        }
+        return acc;
+      },
+      { income: 0, outcome: 0 }
+    );
+  
+    return totals;
+  }
+
+  async function processTransactions() {
+    try {
+      const transactions = await userDataDB.balance_history;
+      const result = calculateTotals(transactions);
+      
+      // console.log("Total income:", result.income); // Output: Total income: 450
+      // console.log("Total outcome:", result.outcome); // Output: Total outcome: 80
+      setTotalTransactions({totalIncome: result.income, totalOutcome: result.outcome});
+    } catch (error) {
+      // console.error("Error processing transactions:", error);
+    }
+  }
+
+  useEffect(() => {
+    processTransactions();
+  }, [userDataDB.balance_history])
 
 
-  // const test = () => {
-    
 
-  //   if (userDataDB.balance_history) {
-  //     userDataDB.balance_history.map((entry, index) => (
-  //       console.log(entry.value)
-        
-  //     ))
-  //   }
-  // }
+  const showId = () => {
+    console.log(allUsersInfo[0].uid);
+  }
+  
+ 
 
-  // test();
+
+
+  
+
+
+
 
   return (
     <section className="main">
@@ -297,6 +333,8 @@ const Main = () => {
                 <div key={index}>
                   {user.displayName}
                   <br />
+                  {user.cardNumber}
+                  <br />
                   {user.balance}
                   <br />
                   <img style={{height: "100px"}} src={user.userImg} alt="userImg" />
@@ -305,9 +343,10 @@ const Main = () => {
                     type="number"
                     value={amountToTransfer}
                     onChange={handleAmountChangeToTransfer}
-                    placeholder="Enter amount to add"
+                    placeholder="Enter amount to transfer"
                   />
-                  <button onClick={transferAmount}>Add to balance</button>
+                  <button onClick={transferAmount}>Transfer</button>
+                  <button onClick={showId}>Show Id</button>
                   
                 </div>
               )) : null}
@@ -330,8 +369,8 @@ const Main = () => {
               {/* <CartesianGrid strokeDasharray="" /> */}
               <XAxis dataKey="type" />
               <YAxis />
-              {/* <Tooltip /> */}
-              <Legend />
+              <Tooltip />
+              {/* <Legend /> */}
               {/* <Bar dataKey="added" fill="#00BBFF" />
               <Bar dataKey="send" fill="#FF0021" /> */}
               <Bar dataKey="value">
@@ -341,6 +380,13 @@ const Main = () => {
               )) : null}
               </Bar>
             </BarChart>
+
+            <div className="main__analytics__total-income">
+              {totalTransactions.totalIncome ? totalTransactions.totalIncome : null}
+            </div>
+            <div className="main__analytics__total-outcome">
+              {totalTransactions.totalOutcome ? totalTransactions.totalOutcome : null}
+            </div>
             
 
           </div>
