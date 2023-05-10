@@ -2,12 +2,11 @@
 
 .main {
   display: block;
-  height: 100vh;
+  // height: 100vh; devmode
   padding: 50px 70px;
   background: url(../../assets/img/bg/wall1.png) center center / cover no-repeat;
   &__container {
     position: relative;
-    height: 100%;
     width: 100%;
     display: flex;
     // padding: 10px 10px;
@@ -24,13 +23,13 @@
   &__card {
     padding: 20px;
     width: 668px;
-    height: 382px; 
+    // height: 382px; 
     background: #1D1D41;
     color: #fff;
     border-radius: 20px;
     &-rotate {
       // transition: transform 2s;
-      height: 100%;
+      // height: 100%;  devmode
       width: 100%;
       position: absolute;
       top: 0;
@@ -72,4 +71,30 @@
   }
   
   
+  &__all-users {
+    padding: 20px;
+    background: #1D1D41;
+    color: #fff;
+    border-radius: 20px;
+  }
+
+
+  &__analytics {
+    padding: 20px;
+    width: 668px;
+    // height: 382px; 
+    background: #1D1D41;
+    color: #fff;
+    border-radius: 20px;
+    .recharts-layer .recharts-bar-rectangle {
+      display: block;
+      width: 100px !important;
+    }
+    img {
+      width: 100px;
+    }
+  }
 }
+
+
+// .recharts-bar-rectangle  .recharts-layer

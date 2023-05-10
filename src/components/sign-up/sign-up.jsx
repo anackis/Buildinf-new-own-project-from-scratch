@@ -15,6 +15,7 @@ const SignUp = () => {
   const { displayName, email, password } = formFields;
 
 
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -24,7 +25,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const { user } = await createAuthUserWithEmailAndPassword( email, password);
-      await createUserDocumentFromAuth(user, { displayName, cardNumber });
+      await createUserDocumentFromAuth(user, { displayName, cardNumber, cardNumberBack });
       resetFormFields();
       console.log("User created successfully!");
     } catch (error) {
@@ -42,6 +43,7 @@ const SignUp = () => {
 
   
   const [cardNumber, setCardNumber] = useState(null);
+  const [cardNumberBack, setCardNumberBack] = useState(null);
 
   const generateCardNumber = () => {
     const min = 10 ** 15;
@@ -50,8 +52,17 @@ const SignUp = () => {
     setCardNumber(cardNumber);
   };
 
+  const generateCardNumberBack = () => {
+    const min = 10 ** 2;
+    const max = (10 ** 3) - 1;
+    const cardNumberBack = Math.floor(Math.random() * (max - min + 1) + min);
+    setCardNumberBack(cardNumberBack);
+  };
+
+
   useEffect(() => {
     generateCardNumber();
+    generateCardNumberBack();
   }, [])
 
   // console.log(cardNumber);

@@ -42,7 +42,8 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if(!userSnapshot.exists()) {
     const { displayName, email} = userAuth;
     const createdAt = new Date();
-    const balance = "1000000000";
+    const balance = "100";
+    const balance_history = [{ type: 'income', value: 100}];
     const userImg = userImgIcon;
 
     try {
@@ -52,6 +53,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
         createdAt,
         balance,
         userImg,
+        balance_history,
         ...additionalInformation,
       });
     } catch (error) {

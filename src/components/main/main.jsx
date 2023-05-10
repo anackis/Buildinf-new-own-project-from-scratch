@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from "react";
 
 import { auth, getDb, updateDb, getAllUsers } from "../../utils/firebase/firebase";
 
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 import "./main.scss";
 import SignOut from "../sign-out/sign-out";
 import NavBar from "../nav-bar/nav-bar";
@@ -24,7 +26,9 @@ const Main = () => {
   const [allUsersInfo, setAllUsersInfo] = useState(); 
   const [createdAt, setCreatedAt] = useState();
   const [imgURL, setImgURL] = useState('');
+  
 
+  const [amountToTransfer, setAmountToTransfer] = useState('');
 
     
     
@@ -33,17 +37,13 @@ const Main = () => {
   useEffect(() => {
     const sucscribeCheck = auth.onAuthStateChanged(user => {
       if (user) {
-        // console.log(user);
-        // console.log("// User is signed in");
         getAllUsers().then((response) => setAllUsersInfo(response))
         setUserUid(user.uid)
         getDb(user.uid)
       .then((response) => setUserDataDB(response))
       .catch((error) => console.error('Error fetching data:', error));
-        // setUserUid(user.uid);
       } else {
         console.log("// User is signed out");
-        // setUserUid(null);
       }
     });
 
@@ -52,14 +52,38 @@ const Main = () => {
 
 
 
+
   useEffect(() => {
     if (userDataDB.createdAt) {
       formatTimestamp(userDataDB.createdAt);
-      
     } 
   }, [userDataDB.createdAt])
 
+ 
+ 
+
+  const handleAmountChangeToTransfer = (e) => {
+    setAmountToTransfer(e.target.value);
+  };
+
+  const transferBalanceHistory = () => {
+    const newBalanceChanges = [...userDataDB.balance_history, { type: 'outcome', value: parseFloat(amountToTransfer) }];
+    updateDb(userUid, { balance_history: newBalanceChanges });
+  }
+
+  const transferAmount = () => {
+    const newBalance = Number(userDataDB.balance) - parseFloat(amountToTransfer);
+    
+    setUserBalance(newBalance);
+    transferBalanceHistory();
+    updateDb(userUid, { balance: newBalance });
+    setAmountToTransfer('');
+  };
   
+ 
+ 
+
+
 
 
 
@@ -68,9 +92,17 @@ const Main = () => {
   };
   
   
+  const addBalanceHistory = () => {
+    const newBalanceChanges = [...userDataDB.balance_history, { type: 'income', value: parseFloat(amount) }];
+    updateDb(userUid, { balance_history: newBalanceChanges });
+  }
+
+
   const addAmountToBalance = () => {
     const newBalance = Number(userDataDB.balance) + parseFloat(amount);
+    
     setUserBalance(newBalance);
+    addBalanceHistory();
     updateDb(userUid, { balance: newBalance });
     setAmount('');
   };
@@ -133,18 +165,11 @@ const Main = () => {
 
   
 
-  
 
   function formatTimestamp({ seconds, nanoseconds }) {
-    // Combine seconds and nanoseconds into a single value in milliseconds
     const totalMilliseconds = (seconds * 1000) + (nanoseconds / 1000000);
-  
-    // Convert the combined value into a Date object
     const date = new Date(totalMilliseconds);
-  
-    // Format the date as desired
     const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-  
     setCreatedAt(formattedDate);
   }
 
@@ -161,12 +186,33 @@ const Main = () => {
     }
   }
 
-
   const uploadImg = async  () => {
     updateDb(userUid, { userImg: imgURL });
   };
 
- console.log(allUsersInfo)
+
+
+
+  const colors = {
+    income: 'green',
+    outcome: 'red',
+  };
+
+  // console.log(userDataDB.balance_history);
+
+
+  // const test = () => {
+    
+
+  //   if (userDataDB.balance_history) {
+  //     userDataDB.balance_history.map((entry, index) => (
+  //       console.log(entry.value)
+        
+  //     ))
+  //   }
+  // }
+
+  // test();
 
   return (
     <section className="main">
@@ -198,6 +244,8 @@ const Main = () => {
             
             {userDataDB.balance ? <h2>Your balance: {userDataDB.balance}$</h2> : null}
             {userDataDB.cardNumber}
+            <br />
+            {userDataDB.cardNumberBack}
             <div className="main__card__creditcard">
               <div className="main__card__drag"
                   onMouseDown={handleDragStart}
@@ -227,11 +275,7 @@ const Main = () => {
                 <img src={spinCard} alt="card-spin" />
               </button>
             </div>
-          </div>
-          
-          
 
-          <div>
             <h1>Balance: {userDataDB.balance}</h1>
             <input
               type="number"
@@ -240,7 +284,12 @@ const Main = () => {
               placeholder="Enter amount to add"
             />
             <button onClick={addAmountToBalance}>Add to balance</button>
+          </div>
+          
+          
 
+          <div className="main__all-users">
+            
             <div>
               <h1>All Users</h1>
               {allUsersInfo ? allUsersInfo.map((user, index) => (
@@ -251,16 +300,53 @@ const Main = () => {
                   {user.balance}
                   <br />
                   <img style={{height: "100px"}} src={user.userImg} alt="userImg" />
-                  
-                  
+
+                  <input
+                    type="number"
+                    value={amountToTransfer}
+                    onChange={handleAmountChangeToTransfer}
+                    placeholder="Enter amount to add"
+                  />
+                  <button onClick={transferAmount}>Add to balance</button>
                   
                 </div>
               )) : null}
             </div>
           </div>
+
+          <div className="main__analytics">
+            
+            <BarChart
+              width={500}
+              height={300}
+              data={userDataDB.balance_history}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              {/* <CartesianGrid strokeDasharray="" /> */}
+              <XAxis dataKey="type" />
+              <YAxis />
+              {/* <Tooltip /> */}
+              <Legend />
+              {/* <Bar dataKey="added" fill="#00BBFF" />
+              <Bar dataKey="send" fill="#FF0021" /> */}
+              <Bar dataKey="value">
+              {userDataDB.balance_history ? userDataDB.balance_history.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[entry.type]} />
+                
+              )) : null}
+              </Bar>
+            </BarChart>
+            
+
+          </div>
           
           <SignOut/>
-
+          
         </div>
       </div>
     </section>
