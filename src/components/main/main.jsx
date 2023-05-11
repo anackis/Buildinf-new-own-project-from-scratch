@@ -1,13 +1,14 @@
 
 import { useState, useRef, useEffect } from "react";
 
-import { auth, getDb, updateDb, getAllUsers } from "../../utils/firebase/firebase";
+import { auth, getDb, updateDb, getAllUsers, db } from "../../utils/firebase/firebase";
 
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import "./main.scss";
 import SignOut from "../sign-out/sign-out";
 import NavBar from "../nav-bar/nav-bar";
+import Transaction from "../transaction/transaction";
 
 import cardFront from "../../assets/img/card/card1.svg";
 import cardBack from "../../assets/img/card/card2.svg";
@@ -29,6 +30,8 @@ const Main = () => {
   
 
   const [amountToTransfer, setAmountToTransfer] = useState('');
+
+  const [recipientCardNumber, setRecipientCardNumber] = useState('');
 
     
     
@@ -61,7 +64,6 @@ const Main = () => {
 
  
  
-
   const handleAmountChangeToTransfer = (e) => {
     setAmountToTransfer(e.target.value);
   };
@@ -79,6 +81,7 @@ const Main = () => {
     updateDb(userUid, { balance: newBalance });
     setAmountToTransfer('');
   };
+ 
   
  
  
@@ -238,7 +241,7 @@ const Main = () => {
 
 
   const showId = () => {
-    console.log(allUsersInfo[0].uid);
+    console.log(allUsersInfo);
   }
   
  
@@ -345,6 +348,12 @@ const Main = () => {
                     onChange={handleAmountChangeToTransfer}
                     placeholder="Enter amount to transfer"
                   />
+                   <input
+                    type="number"
+                    value={recipientCardNumber}
+                    onChange={(e) => setRecipientCardNumber(e.target.value)}
+                    placeholder="Enter recipient card number"
+                  />
                   <button onClick={transferAmount}>Transfer</button>
                   <button onClick={showId}>Show Id</button>
                   
@@ -387,6 +396,9 @@ const Main = () => {
             <div className="main__analytics__total-outcome">
               {totalTransactions.totalOutcome ? totalTransactions.totalOutcome : null}
             </div>
+
+
+            {/* <Transaction userId={userUid}/> */}
             
 
           </div>
