@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 // // import { Link } from "react-router-dom";
 // import { auth } from "../../utils/firebase/firebase";
 
-import SignIn from "../sign-in/sign-in";
-import SignUp from "../sign-up/sign-up";
-import SignOut from "../sign-out/sign-out";
 import icons from "../../assets/img/icons/icons.png";
 import fire from "../../assets/img/icons/purple-fire.png";
+
+import SignIn from "../../components/sign-in/sign-in";
+import SignUp from "../../components/sign-up/sign-up";
+import SignOut from "../../components/sign-out/sign-out";
+
 
 
 
@@ -45,7 +47,7 @@ const Home = () => {
           </div>
          
           <img className='home__icon' src={icons} alt="1png" />
-          <h1>Welcome to a free web bank where you can feel like a millionaire and play with your friends sending millions of $</h1>
+          <h1>Welcome to Free Bank. Here you can feel rich, add any amount on your funds balance and transfer funds to other members of Free Bank.</h1>
           
         </div>
      
@@ -58,7 +60,7 @@ const Home = () => {
             
             <SignIn/>
             <SignUp/>
-            <SignOut/>
+            {/* <SignOut/> */}
           </div>
         </div>
       </div>

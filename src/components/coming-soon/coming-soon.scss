@@ -1,0 +1,26 @@
+
+
+.coming-soon  {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 140px;
+    width: 700px;
+    background-color: #1D1D41;
+    margin: 0 auto;
+    border-radius: 20px;
+    font-size: 30px;
+  }
+  span {
+    color: #fff;
+    display: block;
+    font-weight: 500;
+  }
+}

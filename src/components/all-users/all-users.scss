@@ -1,0 +1,62 @@
+
+
+.all-users {
+  padding: 20px;
+  background: #1D1D41;
+  color: #fff;
+  width: 80%;
+  border-radius: 20px;
+  h2 {
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  &__wrapper {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #29295C;
+  }
+  .css-12u49z-MuiDataGrid-root {
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    // border-color: black;
+  }
+  .css-12u49z-MuiDataGrid-root .MuiDataGrid-cell {
+    border-bottom: 1px solid #4D62F8;
+  }
+  .css-wop1k0-MuiDataGrid-footerContainer {
+    border-top: 2px solid black;
+  }
+  .css-12u49z-MuiDataGrid-root .MuiDataGrid-withBorderColor {
+    border-color: #4B4B99;
+  }
+  .css-1iyq7zh-MuiDataGrid-columnHeaders {
+    border-bottom: 2px solid #4B4B99;
+  }
+  .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+    color: #fff;
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    height: 10px;
+    color: #fff;
+    border: 2px solid #4B4B99;
+    border-radius: 8px;
+  }
+  label {
+    color: #fff;
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:focus {
+    border: 2px solid rgba($color: #000000, $alpha: 0);
+  }
+  
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+    background-color: #1D1D41;
+    color: white;
+  }
+
+  .MuiDataGrid-sortIcon {
+    
+      fill: #fff;
+    
+  }
+}

@@ -6,7 +6,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // overflow: hidden; devmode
+  // overflow: hidden; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-wrapper {
+  position: relative;
+}
+.error {
+  color: red;
+  margin-left: 2px;
+  margin-top: -10px;
+  font-size: 14px;
+  position: absolute;
+}
+.error__sign-up {
+  margin-top: -28px;
 }
 
 p {

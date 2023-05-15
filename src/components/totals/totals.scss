@@ -1,0 +1,38 @@
+
+
+
+.totals {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  color: #fff;
+  img {
+    height: 50px;
+    width: 50px;
+  }
+  &__wrapper {
+    margin-left: 20px;
+  }
+  &__block {
+    display: flex;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background: #1D1D41;
+    width: 45%;
+  }
+  &__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #8C89B4;
+  }
+  &__numbers {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+  }
+}

@@ -1,16 +1,25 @@
 
 
 .navbar {
-  display: block;
+  display: flex;
+  // justify-content: center;
   position: relative;
-  height: 100%;
-  width: 300px;
+  // height: 100%;
+  width: 280px;
   background-color: #1D1D41;
   // background: rgb(29,29,65);
   // background: linear-gradient(322deg, rgba(29,29,65,1) 11%, rgba(99,89,233,0.5) 100%);
   border-radius: 25px;
-  padding: 20px 20px;
+  // padding-top: 57px;
   color: #fff;
+  user-select: none;
+  &__wrapper {
+    position: fixed;
+    max-width: 280px;
+    padding: 40px 30px;
+    display: block;
+    margin: 0 auto;
+  }
   &__logo {
     display: flex;
     align-items: center;
@@ -32,7 +41,9 @@
     width: 90%;
     margin: 0 auto;
     margin-top: 50px;
+    
   }
+  
   &__divider {
     display: block;
     height: 2px;
@@ -46,6 +57,7 @@
     border-radius: 10px;
     margin: 5px 0;
     padding-left: 15px;
+    cursor: pointer;
 
     font-weight: 600;
     font-size: 16px;

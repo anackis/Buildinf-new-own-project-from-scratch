@@ -1,0 +1,96 @@
+
+
+.card {
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 30px;
+  // height: 382px; 
+  background: #1D1D41;
+  color: #fff;
+  border-radius: 20px;
+  h2 {
+    margin-bottom: 20px;
+    // margin-left: 20px;
+  }
+  h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #8C89B4;
+  }
+  
+  .money {
+    // margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+  }
+  &-rotate-front {
+    width: 100%;
+    position: relative;
+  }
+  &-rotate-back {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    user-select: none;
+    cursor: grab;
+  }
+  &__drag {
+    margin-top: 10px;
+    user-select: none;
+    cursor: grab;
+    // height: 150px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    z-index: 2;
+    
+    img {
+      pointer-events: none;
+      // height: 150px;
+      width: 100%;
+    }
+  }
+  &__card-number {
+    top: 130px;
+    left: 24px;
+    position: absolute;
+    font-size: 25px;
+    letter-spacing: 2.5px;
+    color: #000000;
+  }
+  &__card-name {
+    top: 170px;
+    left: 24px;
+    position: absolute;
+    font-size: 22px;
+    color: #000000;
+  }
+  &__card-number_back {
+    top: 113px;
+    left: 142px;
+    position: absolute;
+    font-size: 24px;
+    letter-spacing: 2.5px;
+    color: #000000;
+  }
+  &-rotate-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    img {
+      height: 100%;
+    }
+  }
+
+  
+}

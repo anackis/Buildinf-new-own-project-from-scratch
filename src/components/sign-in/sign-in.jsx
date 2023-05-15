@@ -62,8 +62,6 @@ const SignIn = () => {
       
       {user ? <h2>You are signed In, <Link className="sign-in__link" to="/main">Come in</Link> </h2> : <h2>Please sign in</h2>}
       
-      
-      {/* <h2>Sign In</h2> */}
       <div className="home__right_divider"></div>
       <form onSubmit={handleSubmit}>
       <input
