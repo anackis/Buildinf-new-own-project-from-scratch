@@ -1,0 +1,106 @@
+
+@media only screen and (max-width: 1600px) {
+
+  .all-users {
+    width: 100% !important;
+  }
+  .navbar__wrapper {
+    padding: 30px 15px !important;
+  }
+  .recharts-wrapper {
+    width: 100% !important;
+  }
+  .recharts-surface {
+    width: 100% !important;
+  }
+
+}
+
+@media only screen and (max-width: 1500px) {
+
+  .card__card-number {
+    top: 107px !important;
+  }
+  .card__card-name  {
+    top: 140px !important;
+  }
+  .card__card-number_back {
+    top: 95px !important;
+    left: 120px !important;
+  }
+
+  .main {
+    padding: 0px 0px !important;
+    &__container {
+      border-radius: 0px !important;
+    }
+  }
+  .navbar {
+    border-radius: 0px !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+
+}
+
+@media only screen and (max-width: 1250px) {
+ 
+  .hamburger {
+    display: block !important;
+  }
+
+  .navbar__logo_mobile {
+    display: flex !important;
+  }
+
+  .main__wrapper {
+    padding-top: 130px !important;
+  }
+  .navbar {
+    // display: none !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    z-index: 5 !important;
+    background-color: #252526 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0px 40px !important;
+    &__wrapper {
+      // display: none !important;
+      width: 250px;
+      background-color: #252526 !important;
+      top: 100px;
+      right: 0px;
+      padding: 0px 20px !important;
+      padding-bottom: 20px !important;
+      border-bottom-left-radius: 30px;   
+      .navbar__logo {
+        display: none;
+      }
+    }
+  }
+
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+
+
+}
+
+
+@media only screen and (max-width: 576px) {
+
+
+}
+
+
+@media only screen and (max-width: 440px) {
+
+
+}

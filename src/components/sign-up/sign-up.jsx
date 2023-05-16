@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
 
+import React from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-
 import { useNavigate} from 'react-router-dom';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db, createUserDocumentFromAuth, createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
-
+import { 
+  db, 
+  createUserDocumentFromAuth, 
+  createAuthUserWithEmailAndPassword
+} from "../../utils/firebase/firebase";
 import "./sign-up.scss";
-
-
 
 
 const SignUp = () => {
 
-  
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     displayName: Yup.string()
@@ -29,7 +28,9 @@ const SignUp = () => {
       .min(6, 'Password must be at least 6 characters'),
   });
 
+  
   const generateUniqueCardNumber = async () => {
+
     let newCardNumber = null;
     let exists = true;
 
@@ -46,26 +47,24 @@ const SignUp = () => {
     return newCardNumber;
   };
 
-  const defaultFormFields = {
-    displayName: '',
-    email: '',
-    password: '',
-  };
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password } = formFields;
-  const navigate = useNavigate();
-
-
+    
   const checkCardNumberExists = async (cardNumber) => {
+
     const usersCollection = collection(db, 'users');
     const q = query(usersCollection, where('cardNumber', '==', cardNumber));
     const querySnapshot = await getDocs(q);
+
     return !querySnapshot.empty;
   };
 
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
+  const generateCardNumberBack = async () => {
+
+    const min = 10 ** 2;
+    const max = (10 ** 3) - 1;
+    const cardNumberBack = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return cardNumberBack;
   };
 
 
@@ -76,14 +75,13 @@ const SignUp = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async ({ displayName, email, password }) => {
       try {
-        const { displayName, email, password } = values;
         const newCardNumber = await generateUniqueCardNumber();
+        const cardNumberBack = await generateCardNumberBack();
 
         const { user } = await createAuthUserWithEmailAndPassword(email, password);
-        await createUserDocumentFromAuth(user, { displayName, cardNumber: newCardNumber, cardNumberBack });
-        resetFormFields();
+        await createUserDocumentFromAuth(user, { displayName, cardNumber: newCardNumber, cardNumberBack: cardNumberBack });
         console.log("User created successfully!");
         navigate('/main');
       } catch (error) {
@@ -93,33 +91,8 @@ const SignUp = () => {
   });
 
   
-  const [cardNumber, setCardNumber] = useState(null);
-  const [cardNumberBack, setCardNumberBack] = useState(null);
-
-  // const generateCardNumber = () => {
-  //   const min = 10 ** 15;
-  //   const max = (10 ** 16) - 1;
-  //   const cardNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  //   setCardNumber(cardNumber);
-  // };
-
-  const generateCardNumberBack = () => {
-    const min = 10 ** 2;
-    const max = (10 ** 3) - 1;
-    const cardNumberBack = Math.floor(Math.random() * (max - min + 1) + min);
-    setCardNumberBack(cardNumberBack);
-  };
-
-
-  useEffect(() => {
-    // generateCardNumber();
-    generateCardNumberBack();
-  }, [])
-
 
   return (
-   
-
     <div className="sign-up">
     <h2>Sign Up</h2>
     <div className="home__right_divider"></div>
@@ -147,7 +120,6 @@ const SignUp = () => {
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          // eslint-disable-next-line no-undef
           autoComplete="off"
         />
         {formik.touched.email && formik.errors.email ? (
@@ -163,7 +135,6 @@ const SignUp = () => {
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          // eslint-disable-next-line no-undef
           autoComplete="off"
         />
         {formik.touched.password && formik.errors.password ? (

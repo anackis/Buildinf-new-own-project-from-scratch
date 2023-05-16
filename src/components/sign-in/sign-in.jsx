@@ -28,25 +28,12 @@ const SignIn = () => {
     return unsubscribe;
   }, []);
   
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
-        // const user = response.user;
-        // console.log(user);
-        // console.log(response)
         navigate('/main');
       });
 

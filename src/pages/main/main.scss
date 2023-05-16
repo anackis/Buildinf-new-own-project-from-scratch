@@ -10,12 +10,7 @@
     position: relative;
     max-width: 1540px;
     margin: 0 auto;
-    // devmode
-    // height: 90vh;
     display: flex;
-    // padding: 10px 10px;
-
-    // background: rgb(20,19,50);
     background: linear-gradient(333deg, rgba(20,19,50,0.6) 11%, rgba(99,89,233,0.9) 100%);
     border-radius: 25px;
   }
@@ -25,7 +20,6 @@
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
     
   }
   &__wrapper_top {
@@ -33,57 +27,12 @@
     justify-content: space-around;
   }
   &__content {
-    // padding: 20px 20px;
     width: 57%;
   }
   &__content_right {
-    // padding: 20px 20px;
     width: 38%;
   }
 
-
-  // &__card {
-  //   padding: 20px;
-  //   width: 100%;
-  //   margin-bottom: 30px;
-  //   // height: 382px; 
-  //   background: #1D1D41;
-  //   color: #fff;
-  //   border-radius: 20px;
-  //   &-rotate {
-  //     // transition: transform 2s;
-  //     // height: 100%;  devmode
-  //     // width: 100%;
-  //     position: absolute;
-  //     top: 0;
-  //     user-select: none;
-  //     cursor: grab;
-  //   }
-  //   &__drag {
-  //     height: 150px;
-  //     // width: 400px;
-  //     position: relative;
-  //     display: flex;
-  //     // justify-content: center;
-  //     // align-items: center;
-  //     z-index: 2;
-      
-  //     img {
-  //       pointer-events: none;
-  //       height: 150px;
-  //     }
-  //   }
-  //   &-rotate-button {
-  //     background-color: rgba(0,0,0,0);
-  //     border: none;
-  //     height: 50px;
-  //     cursor: pointer;
-  //     img {
-  //       height: 100%;
-  //     }
-  //   }
-  // }
-  
   
   
   
@@ -93,5 +42,3 @@
   
 }
 
-
-// .recharts-bar-rectangle  .recharts-layer

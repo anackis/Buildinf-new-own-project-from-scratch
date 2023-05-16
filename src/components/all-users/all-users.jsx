@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import { TextField, Select, MenuItem } from "@mui/material";
+import { TextField } from "@mui/material";
 import "./all-users.scss";
 
 const AllUsers = ({ allUsersInfo, showId }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterParam, setFilterParam] = useState('');
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+  const handleSearchChange = ({ target }) => {
+    setSearchTerm(target.value);
   };
 
-  const handleFilterChange = (event) => {
-    setFilterParam(event.target.value);
+  const handleFilterChange = ({ target }) => {
+    setFilterParam(target.value);
   };
 
   const filteredUsers = allUsersInfo.filter(user => {
@@ -22,11 +22,14 @@ const AllUsers = ({ allUsersInfo, showId }) => {
            && (filterParam === '' || user[filterParam]);
   });
 
-  const convertTimestampToDate = (timestamp) => {
+  const convertTimestampToDate = useMemo(() => (timestamp) => {
+    if (!timestamp || !timestamp.seconds || !timestamp.nanoseconds) {
+      return "";
+    }
     const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000;
     const date = new Date(milliseconds);
     return date.toLocaleDateString();
-  };
+  }, []);
 
   const columns = [
     { field: 'userImg', headerName: 'User', width: 80, renderCell: (params) => (<img style={{ height: "50px" }} src={params.value} alt="userImg" />) },

@@ -6,11 +6,9 @@ import chnageIcon from "../../assets/img/user-block/change-user-icon.png";
 import './user-block.scss';
 
 
-const UserBlock = (props) => {
-  const {userDataDB, uploadImg} = props
+const UserBlock = ({userDataDB, uploadImg}) => {
 
   const [createdAt, setCreatedAt] = useState();
-  // const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -18,7 +16,6 @@ const UserBlock = (props) => {
       if (userDataDB.createdAt) {
         formatTimestamp(userDataDB.createdAt);
       } 
-      // setLoading(false);
     }
   }, [userDataDB]);
 
@@ -41,11 +38,6 @@ const UserBlock = (props) => {
     const formattedDate = date.toLocaleDateString();
     setCreatedAt(formattedDate);
   };
-  
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
 
 
   return (
@@ -55,7 +47,7 @@ const UserBlock = (props) => {
       <div className="user-block__img-and-name">
         <img className="user-block__user-icon" src={userDataDB.userImg} alt="userImg" />
         <div className="user-block__user-icon-right">
-        {userDataDB.displayName ? <h2>{userDataDB.displayName}</h2> : null}
+        {userDataDB.displayName && <h2>{userDataDB.displayName}</h2>}
           <label htmlFor="inputfile">
             <img className="user-block__user-icon-change" src={chnageIcon} alt="chnageIcon" />
             
@@ -67,13 +59,10 @@ const UserBlock = (props) => {
       </div>
 
       <div className="user-block__wrapper">
-      
-        {userDataDB.balance ? <h3>Balance ${userDataDB.balance}</h3> : null}
+        {userDataDB.balance && <h3>Balance ${userDataDB.balance}</h3>}
         {<div className="user-block__text">Card owner : {userDataDB.displayName}</div>}
         {<div className="user-block__text">Card number : {userDataDB.cardNumber}</div>}
-        
         {<div className="user-block__text">Account created : {createdAt}</div>}
-      
       </div>
       
     </div>

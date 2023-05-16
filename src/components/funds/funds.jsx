@@ -3,7 +3,21 @@
 import "./funds.scss";
 
 
-const Funds = ({ amount, addAmountToBalance, handleAmountChange, amountToTransfer, handleAmountChangeToTransfer, recipientCardNumber, setRecipientCardNumber, formErrors, transferAmount, recipientCardNumberTouched, setRecipientCardNumberTouched, formSubmitted}) => {
+const Funds = ({ 
+  amount, 
+  addAmountToBalance, 
+  handleAmountChange, 
+  amountToTransfer, 
+  handleAmountChangeToTransfer, 
+  recipientCardNumber, 
+  setRecipientCardNumber, 
+  formErrors, 
+  transferAmount, 
+  recipientCardNumberTouched, 
+  setRecipientCardNumberTouched, 
+  formSubmitted
+}) => {
+
   return (
     <div className="funds">
       <h2 className="funds__header">Funds Managment</h2>
@@ -62,6 +76,3 @@ const Funds = ({ amount, addAmountToBalance, handleAmountChange, amountToTransfe
 export default Funds;
 
 
-// {recipientCardNumberTouched && formErrors.recipientCardNumber && (
-//   <div className="error">{formErrors.recipient}</div>
-// )}

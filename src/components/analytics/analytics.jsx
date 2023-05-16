@@ -1,22 +1,20 @@
 
-
 import React from 'react';
 import { BarChart, XAxis, YAxis, Tooltip, Bar, Cell } from 'recharts';
 
-
 import "./analytics.scss";
 
-const Analytics = ({ userDataDB }) => {
+
+const Analytics = ({ userDataDB: { balance_history } }) => {
 
   const colors = {
     income: '#64CFF6',
     outcome: '#6359E9',
   };
 
+  return (
 
-return (
     <div className="analytics">
-      
       <div className="analytics__header">
         <h2>Analytics</h2>
         <div className="analytics__header_right">
@@ -29,7 +27,7 @@ return (
       <BarChart
         width={650}
         height={300}
-        data={userDataDB.balance_history}
+        data={balance_history}
         margin={{
           top: 5,
           right: 30,
@@ -41,16 +39,14 @@ return (
         <YAxis />
         <Tooltip />
         <Bar dataKey="value">
-        {userDataDB.balance_history ? userDataDB.balance_history.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[entry.type]} />
-          
+        {balance_history ? balance_history.map(({ type }, index) => (
+          <Cell key={`cell-${index}`} fill={colors[type]} />
         )) : null}
         </Bar>
       </BarChart>
-      
       <div className="analytics__label">Income / Outcome</div>
-
     </div>
+
   );
 };
 

@@ -1,11 +1,10 @@
 
-
 import incomeTotals from '../../assets/img/totals/incomeIcon.png';
 import outcomeTotals from '../../assets/img/totals/outcomeIcon.png';
 import "./totals.scss";
 
-const Totals = ({totalTransactions}) => {
 
+const Totals = ({totalTransactions}) => {
 
 return (
     <div className="totals">

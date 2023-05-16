@@ -20,6 +20,7 @@
     height: 80%;
     width: 68%;
     display: flex;
+    overflow: hidden;
 
     // background: rgb(20,19,50);
     background: linear-gradient(333deg, rgba(20,19,50,1) 11%, rgba(99,89,233,1) 100%);
@@ -45,6 +46,7 @@
     }
     &_wrapper {
       z-index: 3;
+      
       // height: 500px;
       width: 400px;
       display: flex;

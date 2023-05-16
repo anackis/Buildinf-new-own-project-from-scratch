@@ -2,30 +2,24 @@
 
 .navbar {
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   position: relative;
-  // height: 100%;
   width: 280px;
   background-color: #1D1D41;
-  // background: rgb(29,29,65);
-  // background: linear-gradient(322deg, rgba(29,29,65,1) 11%, rgba(99,89,233,0.5) 100%);
   border-radius: 25px;
-  // padding-top: 57px;
   color: #fff;
   user-select: none;
   &__wrapper {
     position: fixed;
     max-width: 280px;
     padding: 40px 30px;
-    display: block;
+    display: block ;
     margin: 0 auto;
   }
   &__logo {
     display: flex;
     align-items: center;
     position: relative;
-    // top: 30px;
-    // left: 30px;
     &-fire {
       margin-right: 10px;
     }
@@ -69,5 +63,23 @@
   }
   &__item-active {
     background: #6359E9;
+  }
+
+  .hiden {
+    display: none !important;
+  }
+
+  .hamburger {
+    display: none;
+    background-color: rgba($color: #000000, $alpha: 0);
+    border: none;
+    height: 60px;
+    img {
+      height: 100%;
+    }
+  }
+
+  .navbar__logo_mobile {
+    display: none;
   }
 }
