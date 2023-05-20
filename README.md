@@ -1,6 +1,19 @@
 # Web Bank App from scratch 
 This app was created with React, Firebase, "Recharts",  "MUI"  and has a responsive design.
 
+![home](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/d516bea1-6919-4e4a-aa78-ba8ef387c816)
+
+![main](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/6152ad86-1ba7-4897-a03a-ccb5174ace18)
+
+![404](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/d618a9ef-770f-4b9e-bc85-84d559e0e52d)
+
+![home-mobile](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/3edc8192-c40a-4e28-a4f3-0517927697ae)
+
+![main-mobile](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/8ffa6991-0d6d-404e-996d-17ef6d8de2a7)
+
+![404-mobile](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/18d183bf-5ee0-45aa-b99b-02db850a2351)
+
+
 At this moment the project has 3 pages.
 1. Sign In / Sign up page. It has the functionality of Sign In / Sign up with Firebase Authentication. Has inputs validation as checking if the email is already used e.t.c. On every Sign Up creates a user profile in Firebase Database with parameters such as randomly generated front/back card number (front card number is checking for existing, in case of existing it regenerates), balance, balance history, created at info, Name and Surname, email and user profile Img.
 2. Main page. The main page contains many React elements that can be used on different pages.
@@ -17,5 +30,3 @@ For design, I took as an example this Figma Template: https://www.figma.com/file
 Login/Logout page design I created by myself and the 404 page as well.
 Icons for the app: https://icons8.com/
 Icon Pack: https://www.figma.com/file/5XM91ZUl6QbnfjGlfyfsyx/3D-icons-pack-(Community)?type=design&t=9qb9s22xe26GTC2M-0
-
-![main](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/6152ad86-1ba7-4897-a03a-ccb5174ace18)
