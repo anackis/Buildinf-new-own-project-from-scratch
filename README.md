@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Web Bank App from scratch 
+This app was created with React, Firebase, "Recharts",  "MUI"  and has a responsive design.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+At this moment the project has 3 pages.
+1. Sign In / Sign up page. It has the functionality of Sign In / Sign up with Firebase Authentication. Has inputs validation as checking if the email is already used e.t.c. On every Sign Up creates a user profile in Firebase Database with parameters such as randomly generated front/back card number (front card number is checking for existing, in case of existing it regenerates), balance, balance history, created at info, Name and Surname, email and user profile Img.
+2. Main page. The main page contains many React elements that can be used on different pages.
+  2.1 Working navbar that currently has only 1 functional page "Dashboard" and pages "This section is in development. Coming soon." for other navbar tabs because now this app doesn't have much content for splitting it into pages ( Mostely this navbar was created to stick to design). This navbar was organized as a hamburger menu in smaller resolution adaptive versions of the app. 
+  2.2 Profile element. Profile element display information about a user that comes from Firebase Database such as Name and Surname, user Img, balance, card number, and when the account was created. This component has 2 functional buttons. First, allow the user to upload his own Img for his profile which will be placed in Firebase Database and rerendered on the page after upload. The second button is the "Log Out" button.
+  2.3 Total Income / Outcome element. This element takes balance history from Firebase DB and calculates the total amount and rerender it after any funds management.
+  2.4 Analytics element. This element was created with "Recharts" that allow the easy create data graphs of many different styles and variations. I decided to take "TinyBarChart" for my app. It displays every Income / Outcome to your balance and as well rerenders after a history balance change on Firebase DB.
+  2.5 All Free Bank Users element. This section was created with "MUI" help. This section has all users' data grid tables with filters and search. In this section, the user can find to who he wants to transfer funds and copy the card number for the transaction. 
+  2.6 Card element. Element has a card with spin animation on drag, spin animation on button click, and user data as front/back card number, name surname, and balance. 
+  2.7 Funds element. This element has two forms for adding funds and transaction creat. In adding the funds form for this version of the app user can add any funds amount to the balance. Transaction form has an input for funds amount to transfer and recipient card number. These inputs have validation as checking if a number was entered and if the recipient card number exists or not.
+3. 404 page that appears in case of a "Page not found" error. It has a simple design and allows users to get back to the home page in case of an error. 
 
-## Available Scripts
+For design, I took as an example this Figma Template: https://www.figma.com/file/erkPgTCLes8KAfkpoebTpF/Dashboard-Finance-Bank-Fintech-(Community)?type=design&version-id=3380397783&node-id=114-31&t=YzRhVTaOCOg9DGC3-0
+Login/Logout page design I created by myself and the 404 page as well.
+Icons for the app: https://icons8.com/
+Icon Pack: https://www.figma.com/file/5XM91ZUl6QbnfjGlfyfsyx/3D-icons-pack-(Community)?type=design&t=9qb9s22xe26GTC2M-0
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![main](https://github.com/anackis/Web_Bank_App_From_Scratch/assets/61510461/6152ad86-1ba7-4897-a03a-ccb5174ace18)
