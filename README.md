@@ -27,6 +27,10 @@ At this moment the project has 3 pages.
 3. 404 page that appears in case of a "Page not found" error. It has a simple design and allows users to get back to the home page in case of an error. 
 
 For design, I took as an example this Figma Template: https://www.figma.com/file/erkPgTCLes8KAfkpoebTpF/Dashboard-Finance-Bank-Fintech-(Community)?type=design&version-id=3380397783&node-id=114-31&t=YzRhVTaOCOg9DGC3-0
+
 Login/Logout page design I created by myself and the 404 page as well.
+
 Icons for the app: https://icons8.com/
+
 Icon Pack: https://www.figma.com/file/5XM91ZUl6QbnfjGlfyfsyx/3D-icons-pack-(Community)?type=design&t=9qb9s22xe26GTC2M-0
+
