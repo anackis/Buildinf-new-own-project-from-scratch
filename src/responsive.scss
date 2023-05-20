@@ -14,19 +14,21 @@
     width: 100% !important;
   }
 
+  .home__wrapper {
+    width: unset !important;
+  }
+  .home {
+    padding: 20px;
+  }
+
 }
+
+
 
 @media only screen and (max-width: 1500px) {
 
-  .card__card-number {
-    top: 107px !important;
-  }
-  .card__card-name  {
-    top: 140px !important;
-  }
-  .card__card-number_back {
-    top: 95px !important;
-    left: 120px !important;
+  .not-found__wrapper {
+    width: 50% !important;
   }
 
   .main {
@@ -45,6 +47,12 @@
 
 @media only screen and (max-width: 1250px) {
  
+  .not-found__planet {
+    height: 510px !important;
+    left: -189px !important;
+    top: -187px !important;
+  }
+
   .hamburger {
     display: block !important;
   }
@@ -83,24 +91,277 @@
     }
   }
 
+  .home__wrapper {
+    height: 90% !important;
+  }
+  .home__icon {
+    display: none;
+  }
+  .home {
+    h1 {
+      color: rgba($color: #000000, $alpha: 0);
+    }
+  }
+  .home__left {
+
+    
+  }
+  .home__right {
+    width: 100% !important;
+    background-color: unset !important;
+    display: flex;
+    justify-content: center;
+    padding-left: unset !important;
+    padding-top: 140px !important;
+    margin-right: 40px;
+  }
+  .home__icon {
+  }
+
 }
 
 
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1000px) {
 
+
+  .funds__funds-wrapper {
+    flex-direction: column !important;
+    input {
+      width: 100% !important;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
 
 }
 
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 900px) {
+
+  .not-found__wrapper {
+    width: 80% !important;
+  }
+
+  .main__wrapper {
+    width: 100% !important;
+  }
+  .main__wrapper_top {
+    display: block !important;
+    width: 100% !important;
+  }
+  .main__content {
+    width: 100% !important;
+  }
+  .main__content_right {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center ;
+    margin-bottom: 30px;
+  }
+  .card {
+    width: 45% !important;
+    height: 410px;
+  }
+  .funds {
+    width: 45% !important;
+  }
+  
+  
+
+}
+
+@media only screen and (max-width: 800px) {
+
+  .navbar {
+    height: 65px !important;
+  }
+  .navbar__wrapper {
+    top: 65px !important;
+  }
+  .main__wrapper  {
+    padding-top: 85px !important;
+  }
+  .sign-out {
+    button {
+      right: 10px !important;
+      top: 50px !important;
+    }
+  }
+
+  .totals {
+    display: block !important;
+  }
+  .totals__block {
+    width: 70% !important;
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+  }
+
+
+  .main__content_right {
+    display: block !important;
+  }
+  
+  .funds {
+    width: 100% !important;
+  }
+  .card__drag {
+    width: 80% !important;
+    margin: 0 auto !important;
+    margin-top: 20px !important;
+  }
+  .totals__block {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+
+  .card {
+    width: 100% !important;
+    height: unset !important;
+    h2 {
+      margin-bottom: 5px !important;
+    }
+  }
+
+  .card__card-name {
+    font-size: 30px !important;
+  }
+  .card__card-number {
+    font-size: 30px !important;
+  }
+  
+  
 
 
 }
 
+@media only screen and (max-width: 550px) {
+  .card__card-number {
+    font-size: 24px !important;
+  }
+  .card__card-name {
+    font-size: 24px !important;
+  }
 
-@media only screen and (max-width: 440px) {
+  .sign-in {
+    width: 80%;
+  }
+  .sign-up {
+    width: 80%;
+  }
+  .home__right {
+    padding: 20px 20px;
+    margin-right: unset !important;
+    margin-top: -30px !important;
+  }
+  .home  {
+    h1 {
+      padding: 58px 30px !important;
+    }
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+
+  .not-found__planet {
+    height: 406px !important;
+  }
+
+  .main__wrapper {
+    padding: 10px 10px !important;
+    padding-top: 75px !important;
+  }
+
+  .navbar__logo-logo {
+    font-size: 24px !important;
+  }
+  .navbar__logo-fire {
+    margin-right: 0px !important;
+  }
+
+  .navbar {
+    padding: 0px 10px !important;
+    .hamburger {
+      height: 50px !important;
+    }
+  }
+  .card {
+    width: 100% !important;
+    height: 410px !important;
+  }
+  
+  .user-block {
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+    h3 {
+      font-size: 20px;
+    }
+    h2 {
+      font-size: 22px !important;
+    }
+    .user-block__text {
+      font-size: 16px !important;
+    }
+  }
+  
+  .analytics__header {
+    margin-bottom: -50px !important;
+  }
+  .analytics__label {
+    margin-top: -55px !important;
+  }
+  .analytics {
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+  }
+  .card {
+    margin-bottom: 15px !important;
+  }
+  .main__content_right {
+    margin-bottom: 15px !important;
+  }
+
+  .card__drag {
+    width: 90% !important;
+  }
+
+}
 
 
+@media only screen and (max-width: 400px) {
+  .analytics__header_right {
+    display: none !important;
+  }
+  .sign-out button {
+    top: 63px !important;
+    height: 35px !important;
+  }
+  .card {
+    height: unset !important;
+    padding: 10px 10px !important;
+  }
+  .card__drag {
+    width: 100% !important;
+  }
+  .card__card-number {
+    font-size: 18px !important;
+  }
+  .card__card-name {
+    font-size: 18px !important;
+  }
+  .funds {
+    padding: 10px !important;
+  }
+  .all-users {
+    padding: 10px !important;
+  }
+  .home {
+    height: unset !important;
+  }
 }

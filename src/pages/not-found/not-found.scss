@@ -1,0 +1,49 @@
+
+
+.not-found {
+  // overflow: hidden !important;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url(../../assets/img/bg/not-found.jpg) center center / cover no-repeat;
+  &__planet {
+    position: absolute;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    padding-bottom: 40px;
+    min-height: 30%;
+    width: 35%;
+    margin-top: 5%;
+    background: rgb(44,33,75);
+    border-radius: 25px;
+    background: rgb(109,83,153);
+    background: linear-gradient(151deg, rgba(109,83,153,1) 24%, rgba(2,6,7,0.5) 100%);
+    
+  }
+  &__404 {
+    font-weight: 700;
+    font-size: 140px;
+  }
+  &__text {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  &__link {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
+  }
+}

@@ -57,23 +57,23 @@
     }
   }
   &__card-number {
-    top: 130px;
-    left: 24px;
+    top: 50%;
+    left: 5%;
     position: absolute;
     font-size: 25px;
     letter-spacing: 2.5px;
     color: #000000;
   }
   &__card-name {
-    top: 170px;
-    left: 24px;
+    top: 65%;
+    left: 5%;
     position: absolute;
     font-size: 22px;
     color: #000000;
   }
   &__card-number_back {
-    top: 113px;
-    left: 142px;
+    top: 48%;
+    left: 33%;
     position: absolute;
     font-size: 24px;
     letter-spacing: 2.5px;

@@ -19,7 +19,6 @@ import ComingSoon from "../../components/coming-soon/coming-soon";
 import "./main.scss";
 
 
-
 const Main = () => {
   const [userDataDB, setUserDataDB] = useState({});
   const [userUid, setUserUid] = useState("");
@@ -50,7 +49,7 @@ const Main = () => {
           unsubscribeUsers();
         };
       } else {
-        console.log(" User is signed out");
+        // console.log(" User is signed out");
       }
     });
   }, [userBalance]);
@@ -165,7 +164,7 @@ const Main = () => {
       addBalanceHistory();
       updateDb(recipientSnapshot.docs[0].id, { balance: plusBalance });
     } catch (error) {
-      console.log(`Error: ${error.message}`);
+      // console.log(`Error: ${error.message}`);
       setFormErrors({});
   
       const validationErrors = {};
@@ -275,7 +274,7 @@ const Main = () => {
   } 
 
 
-  console.log("rendaer");
+  // console.log("rendaer");
 
 
   return (

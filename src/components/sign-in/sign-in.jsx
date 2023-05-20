@@ -11,16 +11,17 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        console.log("// User is signed in");
+        // console.log("// User is signed in");
         setUser(user);
       } else {
-        console.log("// User is signed out");
+        // console.log("// User is signed out");
         setUser(null);
       }
     });
@@ -31,15 +32,17 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         navigate('/main');
       });
 
-      console.log("User signed in successfully!");
+      // console.log("User signed in successfully!");
     } catch (error) {
-      console.log(error.message);
+      setError("Wrong Email or Password");
+      // console.log(error.message);
     }
     };
 
@@ -66,6 +69,7 @@ const SignIn = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button type="submit">Sign In</button>
+      {error && <span className="error error-for-sign-in">{error}</span>}
       </form>
     </div>
   );

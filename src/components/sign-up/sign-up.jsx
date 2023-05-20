@@ -82,10 +82,14 @@ const SignUp = () => {
 
         const { user } = await createAuthUserWithEmailAndPassword(email, password);
         await createUserDocumentFromAuth(user, { displayName, cardNumber: newCardNumber, cardNumberBack: cardNumberBack });
-        console.log("User created successfully!");
+        // console.log("User created successfully!");
         navigate('/main');
       } catch (error) {
-        console.log(error.message);
+        if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+          formik.setErrors({ email: 'Email is already used' });
+        } else {
+          // console.log(error.message);
+        }
       }
     },
   });

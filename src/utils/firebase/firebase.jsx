@@ -43,7 +43,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
         ...additionalInformation,
       });
     } catch (error) {
-      console.log('error creating the user ', error.message );
+      // console.log('error creating the user ', error.message );
     }
   }
 
@@ -59,7 +59,7 @@ export const getDb = async (uid) => {
     const response = docSnap.data();
     return response;
   } else {
-    console.log("No such document!");
+    // console.log("No such document!");
   }
 }
 

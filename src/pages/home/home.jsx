@@ -4,6 +4,7 @@ import fire from "../../assets/img/icons/purple-fire.png";
 
 import SignIn from "../../components/sign-in/sign-in";
 import SignUp from "../../components/sign-up/sign-up";
+// import SignOut from "../../components/sign-out/sign-out";
 
 import "./home.scss";
 
@@ -20,13 +21,14 @@ const Home = () => {
             <span className="home__logo-logo">Free Bank</span>
           </div>
           <img className='home__icon' src={icons} alt="1png" />
-          <h1>Welcome to Free Bank. Here you can feel rich, add any amount on your funds balance and transfer funds to other members of Free Bank.</h1>
+          <h1>Welcome to Free Bank. Here you can feel rich, add any amount on your funds balance and transfer funds to other Free Bank members.</h1>
         </div>
      
         <div className="home__right">
           <div className="home__right_wrapper">
             <SignIn/>
             <SignUp/>
+            {/* <SignOut/> */}
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ const Card = ({ userDataDB }) => {
 
   const [degree, setDegree] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const dragStartX = useRef(0);
 
 
@@ -50,6 +51,8 @@ const Card = ({ userDataDB }) => {
   
       if (progress < 1) {
         requestAnimationFrame(animate);
+      } else {
+        setIsButtonDisabled(false);
       }
     };
   
@@ -58,6 +61,9 @@ const Card = ({ userDataDB }) => {
   
 
   const handleButtonClick = () => {
+    if (isButtonDisabled) return;
+
+    setIsButtonDisabled(true);
 
     const startDegree = degree;
     let targetDegree = "";
@@ -66,6 +72,8 @@ const Card = ({ userDataDB }) => {
     const duration = 500; 
 
     smoothRotate(startDegree, targetDegree, duration);
+
+    
   };
 
 
@@ -102,7 +110,7 @@ const Card = ({ userDataDB }) => {
               <img src={cardBack} alt="cardFront" />
             </div>
           </div>
-          <button onClick={handleButtonClick} className="card-rotate-button">
+          <button disabled={isButtonDisabled} onClick={handleButtonClick} className="card-rotate-button">
             <img src={spinCard} alt="card-spin" />
           </button>
 

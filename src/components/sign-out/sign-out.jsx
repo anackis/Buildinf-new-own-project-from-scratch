@@ -15,11 +15,11 @@ const SignOut = () => {
 
   const handleSubmit = () => {
     signOut(auth).then(() => {
-      console.log("Sign-out successful.");
+      // console.log("Sign-out successful.");
       navigate('/');
     }).catch((error) => {
-      console.log("Sign-out error.");
-      console.log(error);
+      // console.log("Sign-out error.");
+      // console.log(error);
     });
     
   }
